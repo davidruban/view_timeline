@@ -2,7 +2,7 @@ from datetime import datetime
 from helper_functions import add_members, create_tweepy_object
 
 # Target twitter account
-twitter_handle = "ExploitDB"  # Ex: "github" (which is @github)
+twitter_handle = ""  # Ex: "github" (which is @github)
 timeline_date = datetime.today().strftime('%m/%d/%y')
 
 if __name__ == "__main__":

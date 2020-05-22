@@ -1,17 +1,17 @@
-import tweepy, creds
-
+import tweepy, os
+from dotenv import load_dotenv
+load_dotenv()
 
 # Creates the twitter api connection and returns a tweepy
 # object after it's been authenticated
 def create_tweepy_object():
     # Note: You will need to apply for a twitter developer
     # account @https://developer.twitter.com/en to obtain these credentials
-    auth = tweepy.OAuthHandler(creds.consumer_key, creds.consumer_secret)
-    auth.set_access_token(creds.access_token, creds.access_token_secret)
+    auth = tweepy.OAuthHandler(os.getenv('CONSUMER_KEY'), os.getenv('CONSUMER_SECRET'))
+    auth.set_access_token(os.getenv('ACCESS_TOKEN'), os.getenv('ACCESS_TOKEN_SECRET'))
 
     # Rate limit aware authentication
-    api = tweepy.API(auth, wait_on_rate_limit=True,
-                     wait_on_rate_limit_notify=True)
+    api = tweepy.API(auth)
 
     # Validate Credentials
     try:
